@@ -16,9 +16,9 @@ df3 = pd.read_csv("data/mexico-real-estate-3.csv", encoding="ISO-8859-1")
 Clean df1 by dropping rows with NaN values. Then remove the "$" 
 and "," characters from "price_usd" and recast the values in the 
 column as floats.
-
-'''# removing unwanted column called  "unamed: 0"
-df2.drop(columns = ["Unnamed: 0"], inplace = True)
+'''
+# removing unwanted column called  "unamed: 0"
+df2.drop(columns = ["Unnamed: 0"], inplace = True,errors='ignore')
 
 # Drop rows with any NaN values from df1
 df1.dropna(inplace=True)
@@ -27,9 +27,9 @@ df1.dropna(inplace=True)
 df1["price_usd"] = (
     df1["price_usd"]
     .astype(str)  # Ensure values are strings for .str operations
-    .str.replace("$", "", regex=False)  # Remove "$"
-    .str.replace(",", "")  # Remove ","
-    .astype(float)  # Convert cleaned strings to float
+    .str.replace("$", "", regex=False)  
+    .str.replace(",", "")  
+    .astype(float) 
 )
 
 
@@ -57,7 +57,7 @@ create two new columns from "lat-lon" named "lat" and "lon",
 respectively.
 '''
  # removing unwanted column called  "unamed: 0"
-df3.drop(columns = ["Unnamed: 0"], inplace = True)
+df3.drop(columns = ["Unnamed: 0"], inplace = True ,errors='ignore')
 
  # Drop null values from df3
 df3.dropna(inplace=True)
@@ -87,3 +87,10 @@ Use pd.concat to concatenate df1, df2, df3 as new DataFrame named
 # Concatenate df1, df2, and df3
 df = pd.concat([df1,df2,df3])
 print(df.head())
+
+'''Save df as a CSV file using the to_csv method. The file path 
+should be "./data/mexico-real-estate-clean.csv". Be sure to set 
+the index argument to False.
+'''
+# Save df
+df.to_csv("data/mexico-real-estate-clean.csv" , index=False)
