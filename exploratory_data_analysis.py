@@ -4,8 +4,8 @@ import plotly.express as px
 
 '''
 Read the CSV file that you created on data wrangling with pandas
-("../small-data/mexico-real-estate-clean.csv") into a DataFrame 
-named df
+("data/mexico-real-estate-clean.csv") into a DataFrame 
+named df.
 '''
 # Import "data/mexico-real-estate-clean.csv"
 df = pd.read_csv("data/mexico-real-estate-clean.csv")
@@ -16,6 +16,7 @@ print(df.shape)
 print(df.head())
 
 '''
+Location Data: "lat" and "lon"
 Add "lat" and "lon" to the code below, and run the code. You'll
 see a map that's centered on Mexico City, and you can use the
 "Zoom Out" button in the upper-right corner of the map so that
@@ -32,8 +33,24 @@ fig = px.scatter_mapbox(
     hover_data=["price_usd"],  # Display price when hovering mouse over house
 )
 
-# Add mapbox_style to figure layout
-fig.update_layout(mapbox_style="open-street-map")
+# # Add mapbox_style to figure layout
+# fig.update_layout(mapbox_style="open-street-map")
 
 # Show figure
-fig.show()
+# fig.show()
+
+'''
+Categorical Data: "state"
+Use the value_counts method on the "state" column to determine 
+the 10 most prevalent states in our dataset.
+'''
+# Get value counts of "state" column
+print(df["state"].value_counts().head(10))
+
+'''
+Numerical Data: "area_m2" and "price_usd
+Use the describe method to print the mean, standard deviation, 
+and quartiles for the "area_m2" and "price_usd" columns.
+'''
+# Describe "area_m2", "price_usd" columns
+print(df[["area_m2","price_usd"]].describe())
