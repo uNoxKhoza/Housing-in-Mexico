@@ -71,3 +71,49 @@ plt.ylabel("Frequency")
 
 # Add title
 plt.title("Distribution of Home Sizes");
+
+'''
+Create a horizontal boxplot of "area_m2". Make sure that the x-axis 
+has the label "Area [sq meters]" and the plot has the title 
+"Distribution of Home Sizes". How is the distribution and its left
+ skew represented differently here than in your histogram?
+'''
+# Use Matplotlib to create boxplot of "area_m2"
+plt.boxplot(df["area_m2"],vert=False)
+
+# Add x-axis label
+plt.xlabel("Area [sq meters]")
+
+# Add title
+plt.title("Distribution of Home Sizes");
+
+'''
+Create a histogram of "price_usd". Make sure that the x-axis has 
+the label "Price [USD]", the y-axis has the label "Frequency", 
+and the plot has the title "Distribution of Home Prices". 
+'''
+# Use Matplotlib to create histogram of "price_usd"
+plt.hist(df["price_usd"])
+
+# Add x-axis label
+plt.xlabel("Price [USD]")
+
+# Add y-axis label
+plt.ylabel("Frequency")
+
+# Add title
+plt.title("Distribution of Home Prices");
+
+'''
+Create a horizontal boxplot of "price_usd". Make sure that the 
+x-axis has the label "Price [USD]" and the plot has the title 
+"Distribution of Home Prices".
+'''
+# Use Matplotlib to create boxplot of "price_usd"
+plt.boxplot(df[ "price_usd"], vert=False)
+
+# Add x-label axis
+plt.xlabel("Price [USD]")
+
+# Add y-label axis
+plt.title("Distribution of Home Prices");
