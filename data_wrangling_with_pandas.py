@@ -17,8 +17,6 @@ Clean df1 by dropping rows with NaN values. Then remove the "$"
 and "," characters from "price_usd" and recast the values in the 
 column as floats.
 '''
-# removing unwanted column called  "unamed: 0"
-df2.drop(columns = ["Unnamed: 0"], inplace = True,errors='ignore')
 
 # Drop rows with any NaN values from df1
 df1.dropna(inplace=True)
@@ -94,3 +92,4 @@ the index argument to False.
 '''
 # Save df
 df.to_csv("data/mexico-real-estate-clean.csv" , index=False)
+df = df.drop(columns=["Unnamed: 0"])
