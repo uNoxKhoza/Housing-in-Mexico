@@ -33,11 +33,11 @@ fig = px.scatter_mapbox(
     hover_data=["price_usd"],  # Display price when hovering mouse over house
 )
 
-# # Add mapbox_style to figure layout
-# fig.update_layout(mapbox_style="open-street-map")
+# Add mapbox_style to figure layout
+fig.update_layout(mapbox_style="open-street-map")
 
 # Show figure
-# fig.show()
+fig.show()
 
 '''
 Categorical Data: "state"
@@ -54,3 +54,20 @@ and quartiles for the "area_m2" and "price_usd" columns.
 '''
 # Describe "area_m2", "price_usd" columns
 print(df[["area_m2","price_usd"]].describe())
+
+'''
+Create a histogram of "area_m2". Make sure that the x-axis has 
+the label "Area [sq meters]", the y-axis has the label "Frequency"
+,and the plot has the title "Distribution of Home Sizes".
+'''
+# Use Matplotlib to create histogram of "area_m2"
+plt.hist(df['area_m2'])
+
+# Add x-axis label
+plt.xlabel("Area [sq meters]")
+
+# Add y-axis label
+plt.ylabel("Frequency")
+
+# Add title
+plt.title("Distribution of Home Sizes");
